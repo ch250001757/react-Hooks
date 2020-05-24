@@ -1,0 +1,63 @@
+.todo {
+  width: 550px;
+  margin: 130px auto;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1)
+}
+
+.control h2 {
+  width: 100%;
+  font-size: 100px;
+  text-align: center;
+  color: skyblue;
+  margin: 0;
+}
+
+.control .new-val {
+  padding: 16px 16px 16px 60px;
+  border: 0;
+  outline: none;
+  font-size: 24px;
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 20px;
+  box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.3) inset;
+}
+
+.todo-list ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+  
+
+}
+.todo-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 20px;
+  color:  skyblue;
+  line-height: 30px;
+}
+
+.todo-list input {
+  display: block;
+  width:  60px;
+  height: 20px;
+}
+
+.todo-list label {
+  flex: 1
+}
+.todo-list .del {
+  text-decoration: line-through;
+}
+.todo-list li span {
+  display: inline-block;
+  width: 30px;
+  cursor: pointer;
+}
