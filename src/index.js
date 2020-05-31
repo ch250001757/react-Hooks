@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 // import App from './App';
-import APP from './App';
+import { Provider } from 'react-redux';
+import store from './store';
+import APP from './pages/App';
 import UseStateAPI from './API/UseStateAPI.jsx'
 import UseEffectAPI from './API/UseEffectAPI.jsx'
 import UseMemoAPI from './API/UseMemoAPI.jsx'
 import ToDoList from './TodoList/ToDoList'
 import * as serviceWorker from './serviceWorker';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToDoList />
+    <Provider store={store}>
+    <APP />
+    </Provider>
+    {/* <ToDoList /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
