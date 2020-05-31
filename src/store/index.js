@@ -18,8 +18,10 @@ export default createStore(
     currentSelectingLeftCity: false,
     cityData: null,
     isLoadingCityData: false, // 城市加载数据状态
+    departDate: Date.now(),
     isDateSelectorVisible: false,
     highSpeed: false,
+    
   },
   composeEnhancers(applyMiddleware(thunk)),
 )

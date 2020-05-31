@@ -11,7 +11,7 @@ import Submit from './Submit.jsx'
 import './App.css';
 
 import { bindActionCreators } from 'redux'
-import { exchangeFromTo, showCitySelector, hideCitySelector,fetchCityData,setSelectedCity } from '../store/actions'
+import { exchangeFromTo, showCitySelector, hideCitySelector,fetchCityData,setSelectedCity,showDateSelector } from '../store/actions'
 
 function App(props) {
   const {
@@ -20,7 +20,8 @@ function App(props) {
     to,
     isCitySelectorVisible,
     cityData,
-    isLoadingCityData
+    isLoadingCityData,
+    departDate
   } = props
 
   const onBack = useCallback(() => {
@@ -51,6 +52,12 @@ function App(props) {
     }, dispatch)
   }, [])
 
+  const dateCbs = useMemo(() =>{
+    return bindActionCreators({
+      dateClick: hideCitySelector,
+    }, dispatch)
+  },[])
+
 
   return (
     <div className="App">
@@ -63,7 +70,7 @@ function App(props) {
           // showCitySelecotr={doShowSelector}
           {...cbs}
         />
-        <DepartDate />
+        <DepartDate departDate={departDate} {...dateCbs} />
         <HighSpeed />
         <Submit />
       </form>
