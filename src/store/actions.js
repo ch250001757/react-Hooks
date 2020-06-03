@@ -103,6 +103,13 @@ export function exchangeFromTo() {
   }
 }
 
+export function setDepartDate(departDate) {
+  return {
+      type: ACTION_SET_DEPART_DATE,
+      payload: departDate,
+  };
+}
+
 // 城市数据
 export function fetchCityData(){
   return (dispatch,getState) => {

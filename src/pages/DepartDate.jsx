@@ -21,7 +21,7 @@ export default function DepartDate(props) {
   const week = `周${['日', '一', '二', '三', '四', '五', '六'][date.getDay()]}${isToday ? '(今日)' : ''}`
 
   return (
-    <div className='depart-date'>
+    <div className='depart-date' onClick={() => dateClick() }  >
       <input type="hidden" value={dateVal} />
       {dateVal}
       <span className="depart-week">{week}</span>
