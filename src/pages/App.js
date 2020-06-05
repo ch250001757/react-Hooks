@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from '../common/Header.jsx';
 import CitySelector from '../common/CitySelector.jsx';
 import DateSelector from '../common/DateSelector.js';
 import Journey from './Journey.jsx';
 import DepartDate from './DepartDate.jsx'
-import HighSpeed from './HighSpeed.jsx'
+import HighSpeed from './HighSpeed.js'
 import Submit from './Submit.jsx'
 
 import { dateFormat } from '../utils';
@@ -21,7 +21,8 @@ import {
   setSelectedCity,
   showDateSelector,
   hideDateSelector,
-  setDepartDate
+  setDepartDate,
+  toggleHighSpeed
  } from '../store/actions'
 
 function App(props) {
@@ -33,7 +34,8 @@ function App(props) {
     cityData,
     isLoadingCityData,
     departDate,
-    isDateSelectorVisible
+    isDateSelectorVisible,
+    highSpeed
   } = props
 
   const onBack = useCallback(() => {
@@ -47,6 +49,10 @@ function App(props) {
   // const doShowSelector = useCallback((flag) => {
   //   dispatch(showCitySelector(flag))
   // }, [])
+
+  useEffect(() => {
+    console.log(111)
+  },[])
 
   // action和dispatch绑定在一起
   const cbs = useMemo(() => {
@@ -84,29 +90,35 @@ function App(props) {
     dispatch(hideDateSelector())
   },[])
 
+  const highSpeedCbs = useMemo(() =>{
+    return bindActionCreators({
+      toggleHighSpeed: toggleHighSpeed,
+    }, dispatch)
+  },[])
+
 
   return (
     <div>
       <div className="header-wrapper">
         <Header title="火车票" onBack={onBack} />
       </div>
-      <form className="form">
+      <form className="form" action="./query.html">
         <Journey from={from} to={to}
           // exchangeFromTo={doExChange}
           // showCitySelecotr={doShowSelector}
           {...cbs}
         />
         <DepartDate departDate={departDate} {...dateCbs} />
-        <HighSpeed />
+        <HighSpeed highSpeed={highSpeed}  {...highSpeedCbs} />
         <Submit />
       </form>
+
       <CitySelector
         show={isCitySelectorVisible}
         cityData={cityData}
         isLoading={isLoadingCityData}
         {...citySelectorCbs}
       />
-
       <DateSelector
         title="日期选择"
         {...dateSelectorCbs}

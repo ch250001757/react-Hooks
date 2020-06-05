@@ -22,7 +22,7 @@ export default function DepartDate(props) {
 
   return (
     <div className='depart-date' onClick={() => dateClick() }  >
-      <input type="hidden" value={dateVal} />
+      <input type="hidden" name="date" value={dateVal} />
       {dateVal}
       <span className="depart-week">{week}</span>
     </div>

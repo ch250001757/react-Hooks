@@ -75,7 +75,6 @@ function Month(props) {
     weeks.push(days.slice(i * 7, (i + 1) * 7))
   }
 
-
   return (
     <table className="date-table">
       <thead>
